@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SolNav
+
+## Description
+
+SolNav is a Next.js 14 application designed to provide a comprehensive overview of the Solana blockchain network. The application displays key metrics and analytics, including block height, average block time, transactions per second (TPS), token analytics, transaction tables, and wallet overviews. This application is built using TypeScript and is managed with pnpm.
+
+## Features
+
+- **Network Overview**: Displays essential metrics such as block height, average block time, and TPS.
+- **Block Height**: Shows the current block height of the Solana blockchain.
+- **Average Block Time**: Provides the average time taken to produce a block on the Solana network.
+- **Transactions per Second (TPS)**: Displays the current TPS on the Solana network.
+- **Token Analytics**: Offers detailed analytics for various tokens on the Solana blockchain.
+- **Transactions Table**: Lists recent transactions on the network.
+- **Wallet Overview**: Provides an overview of connected wallets.
+
+## Prerequisites
+
+- Node.js (v16.x or higher)
+- pnpm (v7.x or higher)
 
 ## Getting Started
 
-First, run the development server:
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/inspikalu/solnav.git
+   cd solnav
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   pnpm install
+   ```
+
+### Development
+
+To start the development server, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To build the application for production, run:
 
-## Learn More
+```bash
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will create an optimized production build in the `.next` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To start the application in production mode, run:
 
-## Deploy on Vercel
+```bash
+pnpm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To run the tests, use:
+
+```bash
+pnpm test
+```
+
+### Linting
+
+To lint the codebase, run:
+
+```bash
+pnpm lint
+```
+
+## Additional Scripts
+
+- **`pnpm format`**: Format the code using Prettier.
