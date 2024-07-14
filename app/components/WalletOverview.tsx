@@ -124,7 +124,7 @@ const WalletOverview: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-center mt-2">
                     <span className="text-lg text-gray-800 dark:text-gray-200">Total Balance (USD):</span>
-                    <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">${(balance && solanaPrice) && balance * solanaPrice}</span>
+                    <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">${(balance && solanaPrice) && (balance * solanaPrice).toFixed(2)}</span>
                 </div>
             </div>
 
