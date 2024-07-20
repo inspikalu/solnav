@@ -60,10 +60,10 @@ const TokenAnalytics: React.FC<ITokenAnalyticsProps> = ({ clsName }) => {
             {tokens.map((token) => (
                 <div key={token.id} className="mt-6">
                     <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">{token.name} ({token.symbol.toUpperCase()})</h3>
-                    <div className="mt-2 flex flex-wrap justify-between items-center gap-2">
-                        <span className="text-lg text-gray-800 dark:text-gray-200 whitespace-nowrap">Current Price: ${token.current_price.toFixed(2)}</span>
-                        <span className="text-lg text-gray-800 dark:text-gray-200 whitespace-nowrap">Market Cap: ${token.market_cap.toLocaleString()}</span>
-                        <span className="text-lg text-gray-800 dark:text-gray-200 whitespace-nowrap">24h Volume: ${token.total_volume.toLocaleString()}</span>
+                    <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                        <span className="text-lg text-gray-800 dark:text-gray-200">Current Price: ${token.current_price.toFixed(2)}</span>
+                        <span className="text-lg text-gray-800 dark:text-gray-200">Market Cap: ${token.market_cap.toLocaleString()}</span>
+                        <span className="text-lg text-gray-800 dark:text-gray-200">24h Volume: ${token.total_volume.toLocaleString()}</span>
                         <span className={`text-lg ${token.price_change_percentage_24h >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                             24h Change: {token.price_change_percentage_24h.toFixed(2)}%
                         </span>
