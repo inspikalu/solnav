@@ -44,7 +44,7 @@ const TransactionsTable: React.FC = () => {
             {loading ? (
                 <TableLoader />
             ) : (
-                <table className="min-w-full bg-white dark:bg-gray-900 rounded-lg shadow overflow-hidden my-3">
+                <table className="w-full bg-white dark:bg-gray-900 rounded-lg shadow overflow-hidden my-3">
                     <thead>
                         <tr>
                             <th className="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-800 dark:text-gray-400">Timestamp</th>
