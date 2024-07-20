@@ -22,9 +22,22 @@ interface TokenData {
 interface TokenAnalyticsResponse {
     tokens: TokenData[];
 }
+
 interface ITokenAnalyticsProps {
-    clsName?: string
+    clsName?: string;
 }
+
+// Utility function to format large numbers
+function formatLargeNumber(value: number): string {
+    if (value >= 1_000_000_000) {
+        return (value / 1_000_000_000).toFixed(2) + 'B';
+    } else if (value >= 1_000_000) {
+        return (value / 1_000_000).toFixed(2) + 'M';
+    } else {
+        return value.toLocaleString();
+    }
+}
+
 const TokenAnalytics: React.FC<ITokenAnalyticsProps> = ({ clsName }) => {
     const [tokens, setTokens] = useState<TokenData[]>([]);
     const [loading, setLoading] = useState(false);
@@ -51,7 +64,7 @@ const TokenAnalytics: React.FC<ITokenAnalyticsProps> = ({ clsName }) => {
     }
 
     if (!tokens?.length) {
-        return <ErrorCard message='No data avialable' />;
+        return <ErrorCard message="No data available" />;
     }
 
     return (
@@ -59,12 +72,24 @@ const TokenAnalytics: React.FC<ITokenAnalyticsProps> = ({ clsName }) => {
             <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mt-4">Token Performance Analytics</h2>
             {tokens.map((token) => (
                 <div key={token.id} className="mt-6">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">{token.name} ({token.symbol.toUpperCase()})</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                        {token.name} ({token.symbol.toUpperCase()})
+                    </h3>
                     <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
-                        <span className="text-lg text-gray-800 dark:text-gray-200">Current Price: ${token.current_price.toFixed(2)}</span>
-                        <span className="text-lg text-gray-800 dark:text-gray-200">Market Cap: ${token.market_cap.toLocaleString()}</span>
-                        <span className="text-lg text-gray-800 dark:text-gray-200">24h Volume: ${token.total_volume.toLocaleString()}</span>
-                        <span className={`text-lg ${token.price_change_percentage_24h >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                        <span className="text-lg text-gray-800 dark:text-gray-200">
+                            Current Price: ${token.current_price.toFixed(2)}
+                        </span>
+                        <span className="text-lg text-gray-800 dark:text-gray-200">
+                            Market Cap: ${formatLargeNumber(token.market_cap)}
+                        </span>
+                        <span className="text-lg text-gray-800 dark:text-gray-200">
+                            24h Volume: ${formatLargeNumber(token.total_volume)}
+                        </span>
+                        <span
+                            className={`text-lg ${
+                                token.price_change_percentage_24h >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                            }`}
+                        >
                             24h Change: {token.price_change_percentage_24h.toFixed(2)}%
                         </span>
                     </div>
